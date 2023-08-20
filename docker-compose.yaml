@@ -1,0 +1,29 @@
+services:
+  db:
+    container_name: db
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - web-new
+
+  web:
+    container_name: web
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+#    command: python manage.py runserver 0.0.0.0:8000 --noreload
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - web-new
+networks:
+  web-new:
