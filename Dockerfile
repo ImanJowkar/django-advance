@@ -14,8 +14,8 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 COPY . .
+RUN chmod +x run.sh
+# RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /code
+# USER appuser
 
-RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /code
-USER appuser
-
-CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000", "--noreload"]
+CMD ["bash", "run.sh"]
