@@ -22,4 +22,5 @@ from blogs import views
 app_name = 'blogs'
 urlpatterns = [
     path('', views.IndexView.as_view(), name='home'),
+    path('create/', views.BlogCreate.as_view(), name='create-blog')
 ]
