@@ -5,4 +5,10 @@
 
 {% block content %}
     <h1>Home Page</h1>
+    <hr>
+    {% for post in posts %}
+        <h4><a href="{% url 'blogs:detail' post.id %}">{{ post.title }}</a></h4>
+        <p>{{ post.content }}</p>
+        <hr>
+    {% endfor %}
 {% endblock %}
