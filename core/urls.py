@@ -21,10 +21,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api-auth/', include('rest_framework.urls')),
     path('', include('homepage.urls', namespace='homepage')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('blogs/', include('blogs.urls', namespace='blogs')),
-    path('blogs-api/', include('blogs_api.urls', namespace='blogs-api')),
+    path('api/blogs/', include('blogs_api.urls', namespace='blogs-api')),
+
 ]
 
 # serving static and media for development environment

@@ -30,13 +30,13 @@ class PostCreateView(LoginRequiredMixin,CreateView):
         return reverse_lazy('blogs:index')
 
 
-class PostDetailView(DetailView):
+class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
     template_name = 'blogs/post-detail.html'
     context_object_name = 'post'
 
 
-class PostUpdateView(UpdateView):
+class PostUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
     success_url = '/blogs/'
     fields = ['title', 'image', 'content', 'status', 'category', 'published_at']
@@ -46,7 +46,7 @@ class PostUpdateView(UpdateView):
         return reverse_lazy('blogs:detail', kwargs={'pk': self.object.id})
 
 
-class PostDeleteView(DeleteView):
+class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
 
     def get_success_url(self):

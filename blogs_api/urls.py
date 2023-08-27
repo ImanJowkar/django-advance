@@ -15,11 +15,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.urls import path
+from django.urls import path, include
 from blogs_api import views
 
 
 app_name = 'blogs-api'
 urlpatterns = [
-    path('posts/', views.APIPostListView.as_view(), name='all-post')
+    path('v1/', include('blogs_api.api.v1.urls')),
 ]
