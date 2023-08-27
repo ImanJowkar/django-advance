@@ -27,7 +27,7 @@ class PostCreateView(LoginRequiredMixin,CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('blogs:home')
+        return reverse_lazy('blogs:index')
 
 
 class PostDetailView(DetailView):
@@ -50,5 +50,5 @@ class PostDeleteView(DeleteView):
     model = Post
 
     def get_success_url(self):
-        return reverse_lazy('blogs:home')
+        return reverse_lazy('blogs:index')
 
