@@ -19,7 +19,7 @@ class IndexView(ListView):
 class PostCreateView(LoginRequiredMixin,CreateView):
     model = Post
     # fields = "__all__"
-    fields = ['title', 'image', 'content', 'status', 'category', 'published_at']
+    fields = ['title', 'image', 'content', 'status', 'category']
     template_name = 'blogs/post-create.html'
 
     def form_valid(self, form):
@@ -39,7 +39,7 @@ class PostDetailView(LoginRequiredMixin, DetailView):
 class PostUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
     success_url = '/blogs/'
-    fields = ['title', 'image', 'content', 'status', 'category', 'published_at']
+    fields = ['title', 'image', 'content', 'status', 'category']
     template_name = 'blogs/post-create.html'
 
     def get_success_url(self):

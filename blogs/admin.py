@@ -6,7 +6,7 @@ from blogs.models import Post, Category
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('author', 'title', 'status', 'created_at', 'updated_at', 'published_at')
+    list_display = ('author', 'title', 'status', 'created_at', 'updated_at')
 
 
 admin.site.register(Post, PostAdmin)
