@@ -6,8 +6,8 @@ from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework import viewsets
-from blogs.models import Post
-from blogs_api.api.v1.serializers import PostSerializer
+from blogs.models import Post, Category
+from blogs_api.api.v1.serializers import PostSerializer, CategorySerializer
 
 
 # APIView  ##################################################################################
@@ -79,10 +79,17 @@ class PostDetailGenericApiView(GenericAPIView, mixins.RetrieveModelMixin, mixins
     def delete(self, request, *args, **kwargs):
         return self.destroy(self, *args, **kwargs)
 
+
 # ViewSets ##################################################################################
 
 
-class PostViewSet(viewsets.ViewSet):
+class PostModelViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly]
     serializer_class = PostSerializer
     queryset = Post.objects.filter(status=True)
+
+
+class CategoryModelViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    serializer_class = CategorySerializer
+    queryset = Category.objects.all()
